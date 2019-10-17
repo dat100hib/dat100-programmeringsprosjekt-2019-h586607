@@ -6,6 +6,7 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.oppgave2.GPSData;
 import no.hvl.dat100ptc.oppgave2.GPSDataConverter;
 import no.hvl.dat100ptc.oppgave2.GPSDataFileReader;
+import no.hvl.dat100ptc.oppgave3.GPSUtils;
 import no.hvl.dat100ptc.oppgave4.GPSComputer;
 
 import javax.swing.JOptionPane;
@@ -45,11 +46,18 @@ public class ShowProfile extends EasyGraphics {
 	public void showHeightProfile(int ybase) {
 
 		// ybase indicates the position on the y-axis where the columns should start
+		double[] hoyde = new double[gpspoints.length];
+		
+		for(int i = 0; i < gpspoints.length; i++) {
+			hoyde[i] = gpspoints[i].getElevation();
+		}
+		
+		int maxHoyde = (int)GPSUtils.findMax(hoyde);
 		
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-	
+		makeWindow("Height profile", 2*MARGIN + 2*gpspoints.length, 2*MARGIN + maxHoyde);
+		
+		
 		// TODO - SLUTT
 	}
 
